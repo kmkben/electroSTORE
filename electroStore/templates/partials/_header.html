@@ -1,0 +1,74 @@
+{%load static%}
+<nav class="navbar navbar-expand-md bg-secondary sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand d-md-none" href="#">
+            <!-- <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+            Aperture -->
+            <img src="{% static 'images/logos/logo-ks.jpg' %}" class="rounded-circle" alt="electro-store" height="50" width="50">
+            <span class="website-title">Electro STORE</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between my-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <!-- <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg> -->
+                            <img src="{% static 'images/logos/logo-ks.jpg' %}" class="rounded-circle" alt="electro-store" height="40" width="40">
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-5" href="#">Tour</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-5" href="#">Boutique</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-5" href="#">Features</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-5" href="#">Enterprise</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white fs-5" href="#">Mon compte</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <!-- <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg> -->
+                                <img src="{% static 'images/icons/shopping-cart.png' %}" height="40" atl="Mon panier" />
+                            </a>
+                        </li>
+
+                    {% else %}
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white btn btn-outline-info" href="#">S'identifier</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <!-- <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg> -->
+                                <img src="{% static 'images/icons/shopping-cart.png' %}" height="35" atl="Mon panier" />
+                            </a>
+                        </li>
+
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

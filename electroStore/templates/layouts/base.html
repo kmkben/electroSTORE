@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Electronic Store, electronics things as phone, chargers, airpods and so on">
+        <meta name="author" content="Kemoko KEITA, kmk">
+        <meta name="generator" content="Hugo 0.122.0">
+
+        <title>
+            {% block title %}
+                    
+            {% endblock title %}
+        </title>
+
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/product.css' %}" type="text/css">
+
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        {% include "partials/_header.html" %}
+
+
+		{% block content %}
+            
+    	{% endblock content %}
+
+		
+		{% include "partials/_footer.html" %}
+    </body>
+</html>
