@@ -93,3 +93,14 @@
 .form-check-label {
     font-weight: 400;
 }
+
+
+/** hide password hints **/
+
+#id_password1_helptext, 
+#id_password2_helptext, 
+#id_new_password1_helptext {
+    display: None;
+}
+
+

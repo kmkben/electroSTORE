@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Connexion {% endblock title %}
+
+{% block content %}
+    <div class="col-11 col-sm-8 col-md-8 col-lg-4 mx-auto mt-5">
+       
+       {% load crispy_forms_tags %}
+
+        <div class="my-5 rounded-3 p-lg-5 mt-5">
+
+            {% include "partials/_flash.html" %}
+
+            {% if message_error %}
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    <span class="fw-bold">{{ message_error }} </span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            
+            <h2 class="mb-5 mb-sm-5 mb-md-5 my-lg-5 text-center">Connexion</h2>
+            
+            <form action="" method="post" autocomplete="off" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}  
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </div>
+            </form>
+            <p class="text-center mt-4 text-muted">
+                Pas encore membre ? <a href="{% url 'register' %}">Créer un compte</a>
+            </p>
+        </div>
+    </div>    
+{% endblock content %}

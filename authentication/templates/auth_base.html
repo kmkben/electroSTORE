@@ -1,0 +1,76 @@
+{% extends 'layouts/base.html' %}
+
+{% load humanize %}
+
+{% block title %} KEITA STORE {% endblock title %}
+
+{% block content %}
+
+    <div class="col-11 col-sm-11 col-md-11 col-lg-8 mx-auto mt-lg-5">
+        <div class="row mt-5">
+            <div class="d-none d-lg-block col-md-3 px-4 border-end">
+                <div class="h3 mb-4">
+                    <i class="fas fa-user"></i> Profile
+                </div>
+                <a href="{% url 'account' %}" class="btn btn-{% if page == 'account_info' %}primary{% else %}light{% endif %} d-grid btn-lg p-0">
+                    Modifier mes informations personnelles
+                </a><br/>
+
+                <a href="{% url 'account_addresses' %}" class="btn btn-{% if page == 'address' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                    Mes adresses
+                </a><br/>
+
+                <a href="{% url 'account_change_identifiants' %}" class="btn btn-{% if page == 'change_identifiants' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                    Changer mes identifiants
+                </a><br/>
+
+                <a href="{% url 'account_change_password' %}" class="btn btn-{% if page == 'change_password' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                    Changer mon mot de passe
+                </a><br/>
+
+                <div class="h3 my-4">
+                    <i class="fas fa-cart-shopping"></i> Mes achats
+                </div>
+                <a href="#" class="btn btn-{% if page == 'orders' %}'primary' {% else %} 'light' {% endif %} btn-lg d-grid text-left">Mes commandes</a><br/>
+            </div>
+        
+            <div class=" d-lg-none d-block d-sm-block d-md-block">
+                <div class="">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a href="{% url 'account' %}" class="btn btn-{% if page == 'account_info' %}primary{% else %}light{% endif %} d-grid btn-lg">
+                                Mes informations
+                            </a> 
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_addresses' %}" class="btn btn-{% if page == 'address' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                                Mes adresses
+                            </a> 
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'account_change_identifiants' %}" class="btn btn-{% if page == 'change_identifiants' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                                Changer mes identifiants
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-{% if page == 'change_password' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                                Changer mot de passe
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-{% if page == 'orders' %}primary{% else %}light{% endif %} btn-lg d-grid text-left">
+                                Mes commandes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-8 mx-auto">
+                {% block account_body %}{% endblock %}
+            </div>
+        </div>
+    </div>    
+
+{% endblock content %}

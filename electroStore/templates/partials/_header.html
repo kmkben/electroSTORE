@@ -1,70 +1,92 @@
 {%load static%}
-<nav class="navbar navbar-expand-md bg-secondary sticky-top border-bottom" data-bs-theme="dark">
-    <div class="container">
-        <a class="navbar-brand d-md-none" href="#">
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container-fluid mx-lg-5">
+        <a class="navbar-brand d-md-none" href="{% url 'home' %}">
             <!-- <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
             Aperture -->
             <img src="{% static 'images/logos/logo-ks.jpg' %}" class="rounded-circle" alt="electro-store" height="50" width="50">
-            <span class="website-title">Electro STORE</span>
+            <span class="website-title text-light">Electro STORE</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+                <h5 class="offcanvas-title website-title text-light" id="offcanvasLabel">Electro STORE</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav flex-grow-1 justify-content-between my-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'home' %}">
                             <!-- <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg> -->
                             <img src="{% static 'images/logos/logo-ks.jpg' %}" class="rounded-circle" alt="electro-store" height="40" width="40">
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-white fs-5" href="#">Tour</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-5" href="#">Boutique</a>
+                        <a class="nav-link link-light fs-5" href="#">Boutique</a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-white fs-5" href="#">Features</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-5" href="#">Enterprise</a>
+                        <a class="nav-link link-light fs-5" href="#">Enterprise</a>
                     </li>
+
+                    <div class="d-none d-sm-none d-md-none d-lg-block my-auto w-50 me-lg-0">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                            <button class="btn btn-warning" type="submit">Recherche</button>
+                        </form>
+                    </div>
 
                     {% if user.is_authenticated %}
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white fs-5" href="#">Mon compte</a>
+                        <li class="nav-item dropdown my-auto ms-lg-0">
+                            <div class="dropdown-center">
+                                <a class="dropdown-toggle btn btn-outline-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{% static 'images/icons/user3.png' %}" height="35" atl="Mon Compte" />
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'account' %}"><h4 class="fw-bold"> {{ user.fullname }} </h4></a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'account' %}">Mes informations personnelles</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'account_addresses' %}">Mes adresses</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'account' %}">Mes commandes</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Me deconnecter</a></li>
+                                </ul>
+
+                            </div>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item my-auto me-lg-5">
                             <a class="nav-link text-white" href="#">
                                 <!-- <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg> -->
-                                <img src="{% static 'images/icons/shopping-cart.png' %}" height="40" atl="Mon panier" />
+                                <img src="{% static 'images/icons/shopping-cartc1.png' %}" height="35" atl="Mon panier" />
                             </a>
                         </li>
 
                     {% else %}
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white btn btn-outline-info" href="#">S'identifier</a>
+                        <li class="nav-item my-auto">
+                            <a class="nav-link text-white btn btn-info" href="{% url 'login' %}">S'identifier</a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link text-white" href="#">
-                                <!-- <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg> -->
+                                <-- <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg> --
                                 <img src="{% static 'images/icons/shopping-cart.png' %}" height="35" atl="Mon panier" />
                             </a>
-                        </li>
+                        </li> -->
 
                     {% endif %}
                 </ul>
@@ -72,3 +94,10 @@
         </div>
     </div>
 </nav>
+
+<div class="d-block d-sm-block d-md-block d-lg-none mt-3 mx-auto w-sm-50 form-search w-75 mt-5">
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
